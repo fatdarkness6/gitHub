@@ -38,10 +38,10 @@ export default function Search() {
         <div className='p2'>
           <div className='repose'>
             { state.result.map((e) => {
+              console.log(e);
               if(searchParamsType == "repositories") {
                 return <RenderSearchRepositories img = {e.deployments_url} updated_at = {e.updated_at} language = {e.language} params={e.full_name} />;
               }
-              console.log(e);
             })}
           </div>
         </div>
