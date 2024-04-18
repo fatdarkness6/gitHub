@@ -81,9 +81,6 @@ export default function RepositoryPage() {
               )}
 
               <div className='p2'>
-                <div className='clearFilter'>
-                  {/* <h6>{result.length} results found</h6> */}
-                </div>
 
                 <SearchBtn
                   results={result.length}

@@ -224,3 +224,15 @@ export function reducer(state, action) {
     }
     return state;
   }
+
+  //.................................................searchLanguages............................
+
+ export  function searchLanguagesReducer(state, action)  {
+   if(action.type == "updateSearchLanguages")  {
+    return {
+       ...state,
+       result: action.payload
+     }
+    }
+    return state
+  }

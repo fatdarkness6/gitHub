@@ -1,14 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-export default function Input() {
+
+export default function Input2() {
 
     const [set , setSet] = useState("")
-
-    let pathanem = ( window.location.pathname);
-
-  let replace =   pathanem.replace("/" , "")
+    const [search , setSearch] = useSearchParams();
 
     
   const navigate = useNavigate()
@@ -27,15 +24,19 @@ export default function Input() {
             <form className="f" onSubmit={(e) => {
             
             e.preventDefault()
-               navigate(`/search?q=${set}&type=repositories`)
-               
+                if(search.get('type') == "code") {
+                    navigate(`/search?q=${set}&type=code`)
+                }else if(search.get('type') == "repositories") {
+                    navigate(`/search?q=${set}&type=repositories`)
+                }
+                location.reload()
         }} >
                     <button type="button" class="btn btn-outline-secondary bbb">
 
 
                         <i class="fa-solid fa-magnifying-glass"></i>
 
-                        <input  type="search" onChange={(e) => {
+                        <input placeholder={search.get("q")} type="search" onChange={(e) => {
                             let a  = e.target.value 
                             setSet(a)
                             

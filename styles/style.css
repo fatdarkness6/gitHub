@@ -11,7 +11,10 @@ ul , li {
 a {
     text-decoration: none !important;
 }
-
+.wrapper2 {
+    margin: 0 auto;
+    max-width: 1850px;
+}
 .main .wrapper {
     margin: 0 auto;
     max-width: 1200px;
@@ -37,11 +40,14 @@ i {
     max-width: 1200px;
     margin: 0 auto;
 }
-header {
+header , .header2 {
     padding: 0 20px;
     
     border-bottom: #21262d solid 1px;
     background-color: #010409;
+}
+.header2 {
+    padding: 0 20px 10px 20px;
 }
 span {
     color: #fff;
@@ -55,7 +61,7 @@ span {
     flex-direction: column;
     justify-content: center;
 }
-header .left {
+header .left , .header2 .left {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -71,25 +77,25 @@ header .left {
     font-weight: 500;
     color: #e6edf3;
 }
-header .left h4  {
+header .left h4 , .header2 .left h4 {
     height: 12px;
     font-size: 15px;
     color: #fff;
     margin: 0;
     
 }
-header .left button {
+header .left button , .header2 .left button {
     background-color: transparent;
     color: #8f8f8f;
     padding: 1px 7px 1px 7px;
     border: 1px solid #30363d;
     
 }
-header .left button:hover {
+header .left button:hover , .header2 .left button:hover {
     background-color: transparent;
     border: 1px solid #8b949e;
 }
-header .left button i  {
+header .left button i , .header2 .left button i {
     font-size: 18px;
 }
 i.bi-github {
@@ -129,6 +135,12 @@ i.bi-github {
     margin-top: 15px;
     justify-content: space-between;
 }
+.header2 .flex2 {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    gap: 20px;
+}
 .flex-button {
     display: flex;
     align-items: center;
@@ -156,16 +168,76 @@ i.bi-github {
 .part2 {
     margin-top: 15px;
 }
-header .left i {
+.searchFilter .filterOption ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.searchFilter {
+    padding: 0 30px;
+    border-right: 1px solid #5c5c5c;
+    width: 15%;
+    height: 900px;
+}
+.searchFilter .filterBy h4 {
+    color: #fff;
+    font-size: 17px;
+}
+.searchFilter .filterOption {
+    margin-top: 30px;
+}
+.searchFilter .filterOption ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 10px;
+    border-bottom: 1px solid #414141;
+    padding-bottom: 20px;
+}
+.searchFilter .filterOption ul li h5 {
+    color: #fff;
+    margin: 0;
+    font-size: 14px;
+}
+.searchFilter .filterOption ul li i { 
+    width: 20px;
+}
+header .left i , .header2 .left i{
     font-size: 30px;
 }
-
+.searchFilter .filterLanguages .showLan {
+    padding: 20px 0 0 10px;
+}
+.searchFilter .filterLanguages .showLan div {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+}
+.searchFilter .filterLanguages span {
+    color: #9e9e9e;
+    font-size: 14px;
+}
+.searchFilter .filterLanguages .showLan h6 {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+}
 .part2 ul  {
     flex-direction: row;
     gap: 15px;
     margin: 0;
     display: flex;
     padding: 0;
+    align-items: center;
+}
+.header2 .big-input {
+    width: 100%;
+}
+ .big-input button.bbb2 {
+    width: 100%;
+    display: flex;
     align-items: center;
 }
 .part2 .notCenter {
@@ -244,10 +316,15 @@ header .left i {
 .main .p1 {
     display: flex;
     flex-direction: column;
-    gap: 13px
+    gap: 13px;
+    width: 25%;
+    
 }
 .main .p2 {
     width: 75%;
+}
+.main .wrapper2 .p2 {
+    width: 80%;
 }
 .main .p1 .userImage img {
     width: 300px;
@@ -466,27 +543,27 @@ header .left i {
     border-radius: 50%;
     display: inline-block;
 }
-.type .part1-1 div.yellow {
+.type .part1-1 div.yellow ,  .showLan .yellow {
     background-color: #F1E05C;
 }
-.type .part1-1 div.blue , .part1-11.margin div.blue {
+.type .part1-1 div.blue , .part1-11.margin div.blue , .showLan .blue {
     background-color: #3178c6;
 }
-.type .part1-1 div.purple , .part1-11.margin div.purple{
+.type .part1-1 div.purple , .part1-11.margin div.purple , .showLan .purple{
 
     background-color: #563d7c;
 
 }
-.type .part1-1 div.red , .part1-11.margin div.red {
+.type .part1-1 div.red , .part1-11.margin div.red , .showLan .red{
     background-color: #e34c26;
 }
-.type .part1-1 div.blueLight ,.part1-11.margin div.blueLight  {
+.type .part1-1 div.blueLight ,.part1-11.margin div.blueLight , .showLan .blueLight  {
     background-color: #2f81f7;
 }
-.type .part1-1 div.gray , .part1-11.margin div.gray  {
+.type .part1-1 div.gray , .part1-11.margin div.gray , .showLan .gray  {
     background-color: #555555;
 }
-.type .part1-1 div.orange , .part1-11.margin div.orange {
+.type .part1-1 div.orange , .part1-11.margin div.orange , .showLan .orange {
     background-color: #b07219;
 }
 
@@ -1949,7 +2026,6 @@ font-size: 14px;
     background-attachment: fixed;
     background-position: center;
     width: 100%;
-<<<<<<< HEAD
     position: relative;
 }
 .wallpaper .textPart .flx {
@@ -1965,10 +2041,8 @@ font-size: 14px;
 .wallpaper .textPart .flx button {
     background-color: transparent;
     border: none;
-    
     position: absolute;
     animation:animate 2s infinite ;
-    
 }
 .wallpaper .textPart::after {
     content: "";
@@ -1979,9 +2053,7 @@ font-size: 14px;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 2;
-=======
     height: 100%;
->>>>>>> 86ab70a (a)
 }
 .wallpaper .textPart h1 {
     padding-top: 40%;
@@ -2078,7 +2150,7 @@ form[type = form] {
         padding: 0 20px;
     }
     .main .p1 .userImage img {
-        width: 250px;
+        width: 100%;
     }
     .registry-options {
         flex-wrap: wrap;
