@@ -37,10 +37,12 @@ export default function Search() {
         <SearchFilter lan={state.result} />
         <div className='p2'>
           <div className='repose'>
-            {searchParamsType == "repositories" ?state.result.map((e) => {
+            { state.result.map((e) => {
+              if(searchParamsType == "repositories") {
+                return <RenderSearchRepositories img = {e.deployments_url} updated_at = {e.updated_at} language = {e.language} params={e.full_name} />;
+              }
               console.log(e);
-              return <RenderSearchRepositories img = {e.deployments_url} updated_at = {e.updated_at} language = {e.language} params={e.full_name} />;
-            }) : null}
+            })}
           </div>
         </div>
       </div>
