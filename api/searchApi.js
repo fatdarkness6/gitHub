@@ -3,11 +3,11 @@ import { tokenTest } from "../src/token";
 
 
 
-async  function searchRepository(searchParamsType , searchParams) {
+async  function searchRepository(searchParamsType , searchParams , searchPages) {
     const octokit = new Octokit({
-        auth: "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"
+        auth: "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"
       })
-     let repository =  await octokit.request(`GET /search/${searchParamsType}?q=${searchParams}&page=1&`, {
+     let repository =  await octokit.request(`GET /search/${searchParamsType}?q=${searchParams}&page=${searchPages}&per_page=10`, {
         headers: {
           'X-GitHub-Api-Version': '2022-11-28',
           'Accept': 'application/vnd.github+json'

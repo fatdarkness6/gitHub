@@ -2,6 +2,7 @@ import { useEffect ,  } from "react"
 import Moment from "react-moment"
 import { Link , useSearchParams } from "react-router-dom"
 import "../../../../styles/style.css"
+
 export default function RenderSearchRepositories(props) {
 
     
@@ -17,7 +18,7 @@ export default function RenderSearchRepositories(props) {
                 <Link to={`/${props.params}`}>
 
                 <div className="part1-1">
-                    <img  src={props.img}/>
+                   
                     <a href="#" >
                         {props.params}
                     </a>

@@ -1,16 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-// import { Context1 } from "../../context/context"
-// import { getAnswerFromApiUserProfile } from "../../getAnswerFromApiUserProfile/getAnswerFromApiUserProfile"
 import { api } from '../../../api/userInfo';
 import Link from 'antd/es/typography/Link';
 import '../../../styles/style.css';
-import Footer from '../Footer/footer';
 
 export default function UserProfile(props) {
-  // let cont = useContext(Context1)
-  // let a = cont.setSet1
-  // let b = cont.rec1
-
   let [rec, setSet] = useState('');
   let params = props.params;
   let obj = {
@@ -25,7 +18,7 @@ export default function UserProfile(props) {
     blog: rec.blog,
   };
   let followers = obj.followers_url;
-  
+
   useEffect(() => {
     api(params).then((e) => {
       setSet(e);
@@ -35,21 +28,20 @@ export default function UserProfile(props) {
   return (
     <>
       <div className='p1'>
-      <div className='baham'>
-        <div className='userImage'>
-          <img src={obj.image} />
+        <div className='baham'>
+          <div className='userImage'>
+            <img src={obj.image} />
+          </div>
+          <div className='matn-p1'>
+            <div className='userName'>
+              <p>{obj.name}</p>
+            </div>
+            <div className='login'>
+              <h5>{obj.login}</h5>
+            </div>
+          </div>
         </div>
-      <div className='matn-p1'>
-        <div className='userName'>
-          <p>{obj.name}</p>
-        </div>
-        <div className='login'>
-          <h5>{obj.login}</h5>
-        </div>
-      </div>
-
-      </div>
-      <div className='bio'>
+        <div className='bio'>
           <h6>{obj.bio}</h6>
         </div>
         <div className='button-follow'>
