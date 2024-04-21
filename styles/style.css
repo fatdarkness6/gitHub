@@ -2135,6 +2135,14 @@ form[type = form] {
     padding-top: 30%;
     text-align: center;
 }
+.pageination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pageination a {
+    color: #ffffff !important;
+}
 
 
 
