@@ -5,7 +5,7 @@ import { tokenTest } from "../src/token";
 
 async  function searchRepository(searchParamsType , searchParams , searchPages) {
     const octokit = new Octokit({
-        auth: "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"
+        auth: "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"
       })
      let repository =  await octokit.request(`GET /search/${searchParamsType}?q=${searchParams}&page=${searchPages}&per_page=10`, {
         headers: {

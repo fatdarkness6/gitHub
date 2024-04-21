@@ -10,13 +10,16 @@ import Stack from '@mui/material/Stack';
 import { useLocation } from 'react-router-dom';
 import PaginationItem from '@mui/material/PaginationItem';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function Search() {
   const [searchResults, setSearchResults] = useSearchParams();
+  const [pages, setPages] = useState(1);
 
   let searchParamsType = searchResults.get('type');
   let searchParams = searchResults.get('q');
   let searchPages = searchResults.get('page');
+  let lan = searchResults.get('languge');
 
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -28,9 +31,16 @@ export default function Search() {
         type: 'updateSearchLanguages',
         payload: e.items,
       });
+      console.log(e)
     });
+    
+  }, [pages]);
+
+  useEffect(() => {
     document.title = 'Repository search result';
-  }, []);
+  } , [])
+
+
   let objReducer = {
     result: [],
   };
@@ -46,8 +56,15 @@ export default function Search() {
             <SearchFilter lan={state.result} />
             <div className='p2'>
               <div className='repose'>
-                {state.result.map((e) => {
-                  console.log(e);
+                {console.log("")}
+                {state.result.filter((e) => {
+                  if(e.language == lan ) {
+                    return true
+                  }else if (!lan || lan == '') {
+                    return true;
+                  }
+                  
+                }).map((e) => {
                   if (searchParamsType == 'repositories') {
                     return (
                       <RenderSearchRepositories
@@ -60,21 +77,23 @@ export default function Search() {
                 })}
               </div>
               <div  className='pageination'>
-                <Pagination
+                {state.result.length > 0  ?<Pagination
                   page={page}
                   count={100}
                   color="primary"
-                  onChange={() => {
-                    location.reload()
+                  onClick={() => {
+                    setPages()
                   }}
                   renderItem={(item) => (
                     <PaginationItem
                       component={Link}
-                      to={`/search${item.page === 1 ?  `?q=${searchParams}&type=${searchParamsType}&page=1` : `?q=${searchParams}&type=${searchParamsType}&page=${item.page}`}`}
+                      
+                      to={`/search${item.page == 1 ?  `?q=${searchParams}&type=${searchParamsType}&page=1` : `?q=${searchParams}&type=${searchParamsType}&page=${item.page}`}`}
                       {...item}
                     />
                   )}
-                />
+                /> : null }
+                
               </div>
             </div>
           </div>
