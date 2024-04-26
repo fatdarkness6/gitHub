@@ -6,88 +6,98 @@ import SearchFilter from '../../components/searchFilter/searchFilter';
 import { searchLanguagesReducer } from '../../../reducer/reducer';
 import RenderSearchRepositories from './renderSearchRepositories/renderSearchRepositories';
 import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 import { useLocation } from 'react-router-dom';
 import PaginationItem from '@mui/material/PaginationItem';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import TopBarProgress from 'react-topbar-progress-indicator';
+import RenderIssuesSearch from './renderIssuesSearch/renderIssuesSearch';
 
-export default function Search() {
+export default function SearchRepositories() {
   const [searchResults, setSearchResults] = useSearchParams();
   let [pages, setPages] = useState(1);
-  let [loading , setLoading] = useState(false)
-  let cal = 1
+  const [loading, setLoading] = useState(false)
+
+
   let searchParamsType = searchResults.get('type');
   let searchParams = searchResults.get('q');
   let searchPages = searchResults.get('page');
   let lan = searchResults.get('languge');
+  let stateOfIssuesPage = searchResults.get('state');
+  
 
   TopBarProgress.config({
-    barThickness: 5
+    barThickness: 5,
+    barColors: {
+      "0": "#0076ff",
+      "1.0": "#0076ff"
+    },
   });
+
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const page = parseInt(query.get('page') || '1', 10);
   
   useEffect(() => {
+    setLoading(true)
     searchRepository(searchParamsType, searchParams , searchPages).then((e) => {
       dispatch({
         type: 'updateSearchLanguages',
         payload: e.items,
       });
-      if(state.result.length==0){
-        setLoading(true)
-      }else {
-        setLoading(false)
-      }
-    });
-    
+      
+      setLoading(false)
+    })
   }, [pages]);
 
   useEffect(() => {
     document.title = 'Repository search result';
-    
   } , [])
 
 
   let objReducer = {
     result: [],
   };
-
   const [state, dispatch] = useReducer(searchLanguagesReducer, objReducer);
+  console.log(state.result)
 
   return (
     <>
-    {!state.result?  <TopBarProgress/>: null}
-   
+    { loading ?  <TopBarProgress /> : null}
       <SearchHeader />
       <div className='main'>
         <div className='wrapper2'>
           <div className='flexing'>
-            <SearchFilter lan={state.result} />
+            <SearchFilter q = {searchParams} lan={state.result} />
             <div className='p2'>
               <div className='repose'>
+                
                 {state.result.filter((e) => {
+                 
                   if(e.language == lan ) {
                     return true
                   }else if (!lan || lan == '') {
                     return true;
                   }
-                  
+                 
                 }).map((e) => {
-                  if (searchParamsType == 'repositories') {
+                  
+                   
                     return (
                       <RenderSearchRepositories
                         updated_at={e.updated_at}
                         language={e.language}
                         params={e.full_name}
+                        image = {e.owner.avatar_url}
+                        discription={e.description}
+                        star = {e.stargazers_count}
                       />
                     );
-                  }
+                  
+                  
                 })}
               </div>
-              {console.log(pages)}
+              
               <div onClick={() => {
                 
                 setPages(pages + 1)
@@ -101,14 +111,11 @@ export default function Search() {
                   renderItem={(item) => (
                     <PaginationItem
                       component={Link}
-                      
-                      
-                      to={`/search${item.page == 1 ?  `?q=${searchParams}&type=${searchParamsType}&page=1` : `?q=${searchParams}&languge=${lan}&type=${searchParamsType}&page=${item.page}`}`}
+                      to={`/search${item.page == 1 ?  `?q=${searchParams}&type=${searchParamsType}&page=1` : `?q=${searchParams}&languge=${lan ? lan : ""}&type=${searchParamsType}&page=${item.page}`}`}
                       {...item}
                     />
                   )}
                 /> : null }
-                
               </div>
             </div>
           </div>

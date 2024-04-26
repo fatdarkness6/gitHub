@@ -236,3 +236,13 @@ export function reducer(state, action) {
     }
     return state
   }
+
+  export function searchIssuesReducer(state , action) {
+    if(action.type == "updateSearchIssues") {
+      return {
+       ...state,
+        result: action.payload
+      }
+    }
+    return state;
+  }
