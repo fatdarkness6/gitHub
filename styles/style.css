@@ -2277,6 +2277,10 @@ form[type = form] {
     align-items: center;
     gap: 5px;
     border: 1px solid ;
+    padding: 17px 0 20px 20px;
+    align-items: start;
+    margin-bottom: 30px;
+    border-radius: 10px;
 }
 .search-users-container .search-users-info-p2 .search-users-info-p2-1 {
     display: flex;
@@ -2286,16 +2290,43 @@ form[type = form] {
 .search-users-container .search-users-info-p2 .search-users-info-p2-1 a:nth-child(1) h5 {
     font-size: 17px;
     color: #4493f8;
+    margin: 0;
+}
+.search-users-container .search-users-info-p2 .search-users-info-p2-1 a:nth-child(2) h5 {
+    margin: 0;
 }
 .search-users-container .search-users-info-p2 .search-users-info-p2-1 a:nth-child(2) h5 {
     font-size: 15px;
     color: #848d97;
     font-weight: 200;
 }
-
-
-
-
+.search-users-container .search-users-info-p2 .search-users-info-p2-2 span {
+    font-size: 14px;
+}
+.search-users-container .search-users-info-p2 .search-users-info-p2-3 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+}
+.search-users-container .search-users-info-p2 .search-users-info-p2-3 .public-repos {
+    display: flex;
+    align-items: center;
+}
+.search-users-container .search-users-info-p2 .search-users-info-p2-3 :is(span , i) {
+    color: #848d97;
+}
+.search-users-container .search-users-info-p2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+.search-users {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 @media only screen and (max-width: 1260px) {
 
     .padding {
@@ -2333,6 +2364,7 @@ form[type = form] {
     .insideRepositories {
         padding: 0 15px;
     }
+
 
 }
 @media only screen and (max-width:1100px) {

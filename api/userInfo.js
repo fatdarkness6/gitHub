@@ -24,7 +24,7 @@ import { tokenTest } from "../src/token";
  async function api(username) {
     
     const octokit = new Octokit({
-        auth: tokenTest()
+        auth: "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"
       })
       
      let response =  await octokit.request('GET /users/{username}', {

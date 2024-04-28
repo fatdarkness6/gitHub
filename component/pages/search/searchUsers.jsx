@@ -19,6 +19,8 @@ export default function SearchUser() {
   const [searchResults, setSearchResults] = useSearchParams();
   let [pages, setPages] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [true1 , setTrue] = useState(false)
+  const [result, setResult] = useState([]);
 
   let searchParamsType = searchResults.get('type');
   let searchParams = searchResults.get('q');
@@ -45,10 +47,15 @@ export default function SearchUser() {
         type: 'updateSearchUsers',
         payload: e.items,
       });
-
+      setTrue(true)
       setLoading(false);
     });
+    
   }, [pages]);
+
+  
+
+  
 
   useEffect(() => {
     document.title = 'Repository search result';
@@ -71,13 +78,13 @@ export default function SearchUser() {
             <SearchFilter q={searchParams} lan={state.result} />
             <div className='p2'>
               <div className='repose'>
-                {state.result.map((e) => {
+                {state.result.length > 0 ? state.result.map((e) => {
                   return (
                     <>
-                      <SearchUsers image = {e.avatar_url} username = {e.login} />
+                      <SearchUsers update = {true1} result = {result} image = {e.avatar_url} username = {e.login} />
                     </>
                   );
-                })}
+                }): null}
               </div>
 
               <div
