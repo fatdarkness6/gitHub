@@ -246,3 +246,12 @@ export function reducer(state, action) {
     }
     return state;
   }
+  export function searchUserRequestReducer(state, action) {
+    if(action.type == "updateSearchUsers") {
+      return {
+       ...state,
+        result: action.payload
+      }
+    }
+    return state;
+  }

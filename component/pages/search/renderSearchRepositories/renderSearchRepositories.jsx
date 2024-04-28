@@ -64,9 +64,50 @@ export default function RenderSearchRepositories(props) {
                                         ? 'darkBlue'
                                         : null || props.language == 'Shell'
                                           ? 'lightGreen'
-                                          : null || props.language == "PHP" ? "darkPurple" : null || props.language == "Dockerfile" ? "gray" : null || props.language == "Visual Basic .NET"? "pinkPurple" : null || props.language == "Rich Text Format" ? "darkOrange": null || props.language == "Haskell"? "darkPurple" : null || props.language == "Stata" ? "darkBlue" : null || props.language == "Go" ? "blueLight" : null|| props.language == "Vue"? "lightGreen" : null || props.language == "Classic ASP" ? "purple"  : null || props.language == "ASP.NET" ? "pupurple":null  || props.language == "Ruby" ? "darkRed" :null ||  !props.language
-                                            ? 'none'
-                                            : null
+                                          : null || props.language == 'PHP'
+                                            ? 'darkPurple'
+                                            : null ||
+                                                props.language == 'Dockerfile'
+                                              ? 'gray'
+                                              : null ||
+                                                  props.language ==
+                                                    'Visual Basic .NET'
+                                                ? 'pinkPurple'
+                                                : null ||
+                                                    props.language ==
+                                                      'Rich Text Format'
+                                                  ? 'darkOrange'
+                                                  : null ||
+                                                      props.language ==
+                                                        'Haskell'
+                                                    ? 'darkPurple'
+                                                    : null ||
+                                                        props.language ==
+                                                          'Stata'
+                                                      ? 'darkBlue'
+                                                      : null ||
+                                                          props.language == 'Go'
+                                                        ? 'blueLight'
+                                                        : null ||
+                                                            props.language ==
+                                                              'Vue'
+                                                          ? 'lightGreen'
+                                                          : null ||
+                                                              props.language ==
+                                                                'Classic ASP'
+                                                            ? 'purple'
+                                                            : null ||
+                                                                props.language ==
+                                                                  'ASP.NET'
+                                                              ? 'pupurple'
+                                                              : null ||
+                                                                  props.language ==
+                                                                    'Ruby'
+                                                                ? 'darkRed'
+                                                                : null ||
+                                                                    !props.language
+                                                                  ? 'none'
+                                                                  : null
               }></div>
             <p className={!props.language ? 'none' : null}>{props.language}</p>
             <ul className='baham'>

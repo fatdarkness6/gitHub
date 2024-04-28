@@ -8,18 +8,15 @@ export default function RenderIssuesSearch(props) {
     <>
       <div className='father_1'>
         <div className='space'>
-          
-            <div className='part1-1 aasd'>
-              <div className='fl a1'>
-                <i class='fa-regular fa-circle-dot'></i>
-                <a href='#'>{props.title}</a>
-              </div>
-              <div className='discription'>
-                <span>{props.body}</span>
-              </div>
+          <div className='part1-1 aasd'>
+            <div className='fl a1'>
+              <i class='fa-regular fa-circle-dot'></i>
+              <a href='#'>{props.title}</a>
             </div>
-         
-          
+            <div className='discription'>
+              <span>{props.body}</span>
+            </div>
+          </div>
         </div>
         <div className='type'>
           <div className='part1-1'>
@@ -32,7 +29,7 @@ export default function RenderIssuesSearch(props) {
                 <span>.</span>
               </li>
               <li>
-                <i class="fa-solid fa-comments"></i>
+                <i class='fa-solid fa-comments'></i>
                 <span>{props.comments}</span>
               </li>
               <li>

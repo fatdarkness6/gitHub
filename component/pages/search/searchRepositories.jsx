@@ -11,7 +11,6 @@ import PaginationItem from '@mui/material/PaginationItem';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import TopBarProgress from 'react-topbar-progress-indicator';
-import RenderIssuesSearch from './renderIssuesSearch/renderIssuesSearch';
 
 export default function SearchRepositories() {
   const [searchResults, setSearchResults] = useSearchParams();
@@ -23,7 +22,7 @@ export default function SearchRepositories() {
   let searchParams = searchResults.get('q');
   let searchPages = searchResults.get('page');
   let lan = searchResults.get('languge');
-  let stateOfIssuesPage = searchResults.get('state');
+
   
 
   TopBarProgress.config({

@@ -40,20 +40,12 @@ export default function SearchFilter(props) {
                 <h5>Issues</h5>
               </li>
             </Link>
-            <li
-              onClick={() => {
-                updateType('pull_requests');
-              }}>
-              <i class='fa-solid fa-code-pull-request'></i>
-              <h5>Pull Request</h5>
-            </li>
-            <li
-              onClick={() => {
-                updateType('users');
-              }}>
+              <Link to={`/search?q=${props.q}&type=users`}>
+            <li>
               <i class='fa-regular fa-user'></i>
               <h5>Users</h5>
             </li>
+            </Link>
             <li
               onClick={() => {
                 updateType('commits');
