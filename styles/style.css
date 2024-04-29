@@ -2327,6 +2327,15 @@ form[type = form] {
     flex-direction: column;
     gap: 10px;
 }
+.baham .connect {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.baham .connect span {
+    color: #848d97;
+}
+
 @media only screen and (max-width: 1260px) {
 
     .padding {

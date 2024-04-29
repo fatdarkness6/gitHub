@@ -40,26 +40,27 @@ export default function SearchFilter(props) {
                 <h5>Issues</h5>
               </li>
             </Link>
-              <Link to={`/search?q=${props.q}&type=users`}>
-            <li>
-              <i class='fa-regular fa-user'></i>
-              <h5>Users</h5>
-            </li>
+            <Link to={`/search?q=${props.q}&type=users`}>
+              <li>
+                <i class='fa-regular fa-user'></i>
+                <h5>Users</h5>
+              </li>
             </Link>
-            <li
-              onClick={() => {
-                updateType('commits');
-              }}>
-              <i class='fa-solid fa-code-commit'></i>
-              <h5>Commits</h5>
-            </li>
-            <li
-              onClick={() => {
-                updateType('topics');
-              }}>
-              <i class='fa-solid fa-snowflake'></i>
-              <h5>Toghics</h5>
-            </li>
+            <Link to={`/search?q=${props.q}&type=commits`}>
+              <li>
+                <i class='fa-solid fa-code-commit'></i>
+                <h5>Commits</h5>
+              </li>
+            </Link>
+            <Link to={`/search?q=${props.q}&type=topics`}>
+              <li
+                onClick={() => {
+                  updateType('topics');
+                }}>
+                <i class='fa-solid fa-snowflake'></i>
+                <h5>Toghics</h5>
+              </li>
+            </Link>
           </ul>
         </div>
         <div className='filterLanguages'>

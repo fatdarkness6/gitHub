@@ -28,6 +28,12 @@ export default function Input2() {
                     navigate(`/search?q=${set}&type=code`)
                 }else if(search.get('type') == "repositories") {
                     navigate(`/search?q=${set}&type=repositories`)
+                }else if(search.get('type') == "issues")  {
+                    navigate(`/search?q=${set}&type=issues`)
+                }else if(search.get('type') == "users")  {
+                    navigate(`/search?q=${set}&type=users`)
+                }else if(search.get('type') == "commits")  {
+                    navigate(`/search?q=${set}&type=commits`)
                 }
                 location.reload()
         }} >

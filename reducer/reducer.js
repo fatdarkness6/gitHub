@@ -255,3 +255,12 @@ export function reducer(state, action) {
     }
     return state;
   }
+  export function searchCommitsReducer(state, action) {
+    if(action.type == "updateSearchCommits") {
+      return {
+       ...state,
+        result: action.payload
+      }
+    }
+    return state;
+  }

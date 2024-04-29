@@ -12,8 +12,11 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import TopBarProgress from 'react-topbar-progress-indicator';
 import RenderIssuesSearch from './renderIssuesSearch/renderIssuesSearch';
+import { searchCommitsReducer } from '../../../reducer/reducer';
+import RenderCommitsSearch from './renderCommitsSearch/renderCommitsSearch';
 
-export default function SearchIssues() {
+
+export default function SearchCommits() {
   const [searchResults, setSearchResults] = useSearchParams();
   let [pages, setPages] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -40,7 +43,7 @@ export default function SearchIssues() {
     setLoading(true);
     searchRepository(searchParamsType, searchParams, searchPages).then((e) => {
       dispatch({
-        type: 'updateSearchIssues',
+        type: 'updateSearchCommits',
         payload: e.items,
       });
 
@@ -55,7 +58,7 @@ export default function SearchIssues() {
   let objReducer = {
     result: [],
   };
-  const [state, dispatch] = useReducer(searchIssuesReducer, objReducer);
+  const [state, dispatch] = useReducer(searchCommitsReducer, objReducer);
   console.log(state.result);
 
   return (
@@ -68,24 +71,17 @@ export default function SearchIssues() {
             <SearchFilter q={searchParams} lan={state.result} />
             <div className='p2'>
               <div className='repose'>
-                {state.result
-                  .filter((e) => {
-                    if (stateOfIssuesPage && e.state == stateOfIssuesPage) {
-                      return true;
-                    } else if (!stateOfIssuesPage || stateOfIssuesPage == '') {
-                      return true;
-                    }
-                  })
-                  .map((e) => {
+                {state.result.map((e) => {
                     return (
                       <>
-                        <RenderIssuesSearch
-                          time={e.created_at}
-                          comments={e.comments}
-                          username={e.user.login}
-                          image={e.user.avatar_url}
-                          body={e.body}
-                          title={e.title}
+                        <RenderCommitsSearch
+                          massage = {e.commit.message}
+                          fullName = {e.repository.full_name}
+                          name = {e.author.login}
+                          image = {e.author.avatar_url}
+                          commiterImage = {e.committer.avatar_url}
+                          commiterLogin = {e.committer.login}
+                          time = {e.commit.author.date}
                         />
                       </>
                     );
