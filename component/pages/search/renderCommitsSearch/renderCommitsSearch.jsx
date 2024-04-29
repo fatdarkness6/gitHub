@@ -15,7 +15,10 @@ export default function RenderCommitsSearch(props) {
               </Link>
             </div>
             <div className='fl a1'>
+            <div className='mahdod'>
+
               <a href='#'>{props.massage}</a>
+            </div>
             </div>
             <div className='discription'>
               <span>{props.body}</span>
