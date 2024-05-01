@@ -29,7 +29,7 @@ export default function RenderCommitsSearch(props) {
           <div className='part1-1'>
             <ul className='baham'>
               <li>
-                {props.name == props.commiterLogin ? (
+                {props.name && props.name == props.commiterLogin ? (
                   <a className='connect'>
                     <img src={props.image} alt='' />
                     <span>
@@ -39,8 +39,8 @@ export default function RenderCommitsSearch(props) {
                   </a>
                 ) : (
                   <a className='connect'>
-                    <img src={props.image} alt='' />
-                    <span>{props.name} authored and</span>
+                   {props.image ?  <img src={props.image} alt='' /> : ""}
+                    {props.name ? <span>{props.name} authored and</span> : ""}
                     <img src={props.commiterImage} alt='' />
                     <span>
                       {props.commiterLogin} committed{' '}

@@ -30,6 +30,7 @@ export default function SearchHeader() {
   let ref2 = useRef();
   let pathanem = window.location.pathname;
   let replace = pathanem.replace('/', '');
+  let use = localStorage.getItem('use');
   //..........................................apiRequest..........................................//
   useEffect(() => {
     document.addEventListener('click', (e) => {
@@ -169,7 +170,7 @@ export default function SearchHeader() {
         <div className='ham2'>
           <div className='ham2-1 flex3'>
             <i class='fa-solid fa-house'></i>
-            <Link to={`/${username}`}>
+            <Link to={`/${use}`}>
               <span>Home</span>
             </Link>
           </div>

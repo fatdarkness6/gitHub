@@ -23,6 +23,7 @@ export default function HomePage() {
   useEffect(() => {
     Aos.init({ duration: 1000 });
     document.title = 'homePage';
+    
   }, []);
   return (
     <div className='header-1'>
@@ -115,6 +116,7 @@ export default function HomePage() {
                 onSubmit={(e) => {
                   e.preventDefault();
                   navigate(`/${use}`);
+                  localStorage.setItem('use', use);
                 }}>
                 <input
                   data-aos='fade-right'

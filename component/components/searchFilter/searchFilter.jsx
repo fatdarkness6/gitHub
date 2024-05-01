@@ -10,6 +10,7 @@ export default function SearchFilter(props) {
     searchParams.set('state', update);
     window.location.search = searchParams.toString();
   }
+
   let lan = props.lan;
   let arry = [];
   let newArray = [];
@@ -22,36 +23,53 @@ export default function SearchFilter(props) {
         </div>
         <div className='filterOption'>
           <ul>
-            <Link to={`/search?q=${props.q}&type=repositories`}>
+            <div
+              className={
+                search.get('type') == 'repositories' ? 'activeSearch' : null
+              }>
+              <Link to={`/search?q=${props.q}&type=repositories&page=1`}>
+                <li
+                  onClick={() => {
+                    if (search.get('state')) {
+                      search.delete('state');
+                    }
+                  }}>
+                  <i class='fa-solid fa-money-bill-transfer'></i>
+                  <h5>Repositories</h5>
+                </li>
+              </Link>
+            </div>
+            <div
+              className={
+                search.get('type') == 'issues' ? 'activeSearch' : null
+              }>
+              <Link to={`/search?q=${props.q}&type=issues&page=1`}>
+                <li>
+                  <i class='fa-solid fa-bullseye'></i>
+                  <h5>Issues</h5>
+                </li>
+              </Link>
+            </div>
+            <div
+              className={search.get('type') == 'users' ? 'activeSearch' : null}>
+              <Link to={`/search?q=${props.q}&type=users&page=1`}>
+                <li>
+                  <i class='fa-regular fa-user'></i>
+                  <h5>Users</h5>
+                </li>
+              </Link>
+            </div>
+            <div className={search.get('type') == 'commits' ? 'activeSearch' : null}>
+            <Link to={`/search?q=${props.q}&type=commits&page=1`}>
               <li
-                onClick={() => {
-                  if (search.get('state')) {
-                    search.delete('state');
-                  }
-                  // updateType('repositories');
-                }}>
-                <i class='fa-solid fa-money-bill-transfer'></i>
-                <h5>Repositories</h5>
-              </li>
-            </Link>
-            <Link to={`/search?q=${props.q}&type=issues`}>
-              <li>
-                <i class='fa-solid fa-bullseye'></i>
-                <h5>Issues</h5>
-              </li>
-            </Link>
-            <Link to={`/search?q=${props.q}&type=users`}>
-              <li>
-                <i class='fa-regular fa-user'></i>
-                <h5>Users</h5>
-              </li>
-            </Link>
-            <Link to={`/search?q=${props.q}&type=commits`}>
-              <li>
+                className={
+                  search.get('type') == 'commits' ? 'activeSearch' : null
+                }>
                 <i class='fa-solid fa-code-commit'></i>
                 <h5>Commits</h5>
               </li>
             </Link>
+            </div>
             <Link to={`/search?q=${props.q}&type=topics`}>
               <li
                 onClick={() => {

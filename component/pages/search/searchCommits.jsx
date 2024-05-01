@@ -59,7 +59,6 @@ export default function SearchCommits() {
     result: [],
   };
   const [state, dispatch] = useReducer(searchCommitsReducer, objReducer);
-  console.log(state.result);
 
   return (
     <>
@@ -71,14 +70,15 @@ export default function SearchCommits() {
             <SearchFilter q={searchParams} lan={state.result} />
             <div className='p2'>
               <div className='repose'>
-                {state.result.map((e) => {
+                {state.result == [] ? "empty" :state.result.map((e) => {
+                  console.log(e.author)
                     return (
                       <>
                         <RenderCommitsSearch
                           massage = {e.commit.message}
                           fullName = {e.repository.full_name}
-                          name = {e.author.login}
-                          image = {e.author.avatar_url}
+                          name = {e.author == null ? "" : e.author.login}
+                          image = {e.author == null ? "" : e.author.avatar_url}
                           commiterImage = {e.committer.avatar_url}
                           commiterLogin = {e.committer.login}
                           time = {e.commit.author.date}
