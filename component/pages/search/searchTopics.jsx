@@ -3,26 +3,26 @@ import { searchRepository } from '../../../api/searchApi';
 import SearchHeader from '../../components/searchHeader/searchHeader';
 import { useEffect, useReducer } from 'react';
 import SearchFilter from '../../components/searchFilter/searchFilter';
-import { searchIssuesReducer } from '../../../reducer/reducer';
-import RenderSearchRepositories from './renderSearchRepositories/renderSearchRepositories';
+
 import Pagination from '@mui/material/Pagination';
 import { useLocation } from 'react-router-dom';
 import PaginationItem from '@mui/material/PaginationItem';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import TopBarProgress from 'react-topbar-progress-indicator';
-import RenderIssuesSearch from './renderIssuesSearch/renderIssuesSearch';
+import { searchTopicsReducer } from '../../../reducer/reducer';
+import RenderTopics from './renderTophicsSearch/renderTophics';
 
-export default function SearchIssues() {
+export default function SearchTopics() {
   const [searchResults, setSearchResults] = useSearchParams();
   let [pages, setPages] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [true1, setTrue] = useState(false);
 
   let searchParamsType = searchResults.get('type');
   let searchParams = searchResults.get('q');
   let searchPages = searchResults.get('page');
   let lan = searchResults.get('languge');
-  let stateOfIssuesPage = searchResults.get('state');
 
   TopBarProgress.config({
     barThickness: 5,
@@ -40,10 +40,10 @@ export default function SearchIssues() {
     setLoading(true);
     searchRepository(searchParamsType, searchParams, searchPages).then((e) => {
       dispatch({
-        type: 'updateSearchIssues',
+        type: 'updateSearchTopics',
         payload: e.items,
       });
-
+      setTrue(true);
       setLoading(false);
     });
   }, [pages]);
@@ -52,12 +52,13 @@ export default function SearchIssues() {
     document.title = 'Repository search result';
   }, []);
 
+  // reducer................................................................
   let objReducer = {
     result: [],
   };
-  const [state, dispatch] = useReducer(searchIssuesReducer, objReducer);
-
-
+  const [state, dispatch] = useReducer(searchTopicsReducer, objReducer);
+  
+  //return..................................................................
   return (
     <>
       {loading ? <TopBarProgress /> : null}
@@ -68,28 +69,17 @@ export default function SearchIssues() {
             <SearchFilter q={searchParams} lan={state.result} />
             <div className='p2'>
               <div className='repose'>
-                {state.result
-                  .filter((e) => {
-                    if (stateOfIssuesPage && e.state == stateOfIssuesPage) {
-                      return true;
-                    } else if (!stateOfIssuesPage || stateOfIssuesPage == '') {
-                      return true;
-                    }
-                  })
-                  .map((e) => {
-                    return (
-                      <>
-                        <RenderIssuesSearch
-                          time={e.created_at}
-                          comments={e.comments}
-                          username={e.user.login}
-                          image={e.user.avatar_url}
-                          body={e.body}
-                          title={e.title}
-                        />
-                      </>
-                    );
-                  })}
+                {state.result.length > 0
+                  ? state.result.map((e) => {
+        
+                    
+                      return (
+                        <>
+                          <RenderTopics title= {e.short_description} username= {e.name}/>
+                        </>
+                      );
+                    })
+                  : null}
               </div>
 
               <div

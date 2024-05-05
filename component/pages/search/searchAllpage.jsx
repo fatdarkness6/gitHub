@@ -3,6 +3,9 @@ import SearchRepositories from "./searchRepositories";
 import SearchIssues from "./searchIssues";
 import SearchUser from "./searchUsers";
 import SearchCommits from "./searchCommits";
+import SearchTopics from "./searchTopics";
+
+
 
 
 export default function SearchAllPage (props) {
@@ -16,5 +19,7 @@ export default function SearchAllPage (props) {
         return <SearchUser/>
     }else if(searchResults.get("type") == "commits") {
         return <SearchCommits/>
+    }else if(searchResults.get("type") == "topics") {
+        return <SearchTopics/>
     }
 }

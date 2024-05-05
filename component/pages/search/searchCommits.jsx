@@ -71,7 +71,7 @@ export default function SearchCommits() {
             <div className='p2'>
               <div className='repose'>
                 {state.result == [] ? "empty" :state.result.map((e) => {
-                  console.log(e.author)
+                 
                     return (
                       <>
                         <RenderCommitsSearch

@@ -5,12 +5,11 @@ import { Typewriter } from 'react-simple-typewriter';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 
 
 export default function HomePage() {
-  useSelector((state) => console.log(state.profile.value));
+
 
   
   const [use, setUse] = useState('');

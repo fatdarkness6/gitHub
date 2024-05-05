@@ -66,7 +66,7 @@ export default function SearchUser() {
     result: [],
   };
   const [state, dispatch] = useReducer(searchUserRequestReducer, objReducer);
-  console.log(state.result);
+
   //return..................................................................
   return (
     <>

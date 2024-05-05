@@ -3,6 +3,7 @@ import { api } from '../../../../api/userInfo';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
+import { repositories } from '../../../../api/RepositoresApi';
 export default function SearchUsers(props) {
   const [result, setResult] = useState([]);
 
@@ -13,11 +14,10 @@ export default function SearchUsers(props) {
 
       api(props.username).then((e) => {
         setResult(e);
-        console.log(e);
+      
       });
-    
+      
   }, [props.username]);
-console.log(props.update)
 
   function cal() {
     if (result.followers > 1000) {

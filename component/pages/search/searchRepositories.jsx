@@ -58,7 +58,7 @@ export default function SearchRepositories() {
     result: [],
   };
   const [state, dispatch] = useReducer(searchLanguagesReducer, objReducer);
-  console.log(state.result)
+
 
   return (
     <>

@@ -264,3 +264,12 @@ export function reducer(state, action) {
     }
     return state;
   }
+  export function searchTopicsReducer(state, action) {
+    if(action.type == "updateSearchTopics") {
+      return {
+       ...state,
+        result: action.payload
+      }
+    }
+    return state;
+  }

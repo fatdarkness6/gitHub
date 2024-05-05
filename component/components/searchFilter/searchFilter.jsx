@@ -59,26 +59,30 @@ export default function SearchFilter(props) {
                 </li>
               </Link>
             </div>
-            <div className={search.get('type') == 'commits' ? 'activeSearch' : null}>
-            <Link to={`/search?q=${props.q}&type=commits&page=1`}>
-              <li
-                className={
-                  search.get('type') == 'commits' ? 'activeSearch' : null
-                }>
-                <i class='fa-solid fa-code-commit'></i>
-                <h5>Commits</h5>
+            <div
+              className={
+                search.get('type') == 'commits' ? 'activeSearch' : null
+              }>
+              <Link to={`/search?q=${props.q}&type=commits&page=1`}>
+                <li
+                  className={
+                    search.get('type') == 'commits' ? 'activeSearch' : null
+                  }>
+                  <i class='fa-solid fa-code-commit'></i>
+                  <h5>Commits</h5>
+                </li>
+              </Link>
+            </div >
+            <div className={
+                search.get('type') == 'topics' && 'activeSearch' 
+              } >
+            <Link to={`/search?q=${props.q}&type=topics`}>
+              <li>
+                <i class='fa-solid fa-snowflake'></i>
+                <h5>Topics</h5>
               </li>
             </Link>
             </div>
-            <Link to={`/search?q=${props.q}&type=topics`}>
-              <li
-                onClick={() => {
-                  updateType('topics');
-                }}>
-                <i class='fa-solid fa-snowflake'></i>
-                <h5>Toghics</h5>
-              </li>
-            </Link>
           </ul>
         </div>
         <div className='filterLanguages'>

@@ -29,7 +29,6 @@ export default function Header2() {
 
   useEffect(() => {
     document.addEventListener('click', (e) => {
-      console.log(e.target);
       if (e.target == ref.current) {
         setOpen(false);
       }

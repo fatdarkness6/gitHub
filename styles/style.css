@@ -2353,6 +2353,30 @@ overflow: hidden;
     font-size: 13px;
     color: #848d8f;
 }
+.topicsHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    border: 1px solid ;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.topicsHeader .topicsImageAndE {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.topicsHeader .topicsImageAndE img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.topicsHeader .topicsImageAndE h5 {
+    color: #0592d3;
+}
+
+
 @media only screen and (max-width: 1260px) {
 
     .padding {
