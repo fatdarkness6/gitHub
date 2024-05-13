@@ -33,6 +33,7 @@
     "animate.css": "^4.1.1",
     "antd": "^5.11.5",
     "aos": "^2.3.4",
+    "axios": "^1.6.8",
     "babel-plugin-macros": "^3.1.0",
     "bootstrap-icons": "^1.11.2",
     "moment": "^2.30.1",

@@ -46,6 +46,7 @@ export default function SearchTopics() {
       setTrue(true);
       setLoading(false);
     });
+    setTrue(false)
   }, [pages]);
 
   useEffect(() => {
@@ -72,10 +73,10 @@ export default function SearchTopics() {
                 {state.result.length > 0
                   ? state.result.map((e) => {
         
-                    
+                   
                       return (
                         <>
-                          <RenderTopics title= {e.short_description} username= {e.name}/>
+                          <RenderTopics  title= {e.short_description} username= {e.name}/>
                         </>
                       );
                     })

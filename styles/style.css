@@ -2361,6 +2361,7 @@ overflow: hidden;
     border: 1px solid ;
     margin-bottom: 20px;
     border-radius: 10px;
+    gap: 10px;
 }
 .topicsHeader .topicsImageAndE {
     display: flex;
@@ -2375,7 +2376,15 @@ overflow: hidden;
 .topicsHeader .topicsImageAndE h5 {
     color: #0592d3;
 }
-
+.topicsHeader .topicsLenght {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.topicsHeader .topicsLenght h6 {
+    color: #848d8f;
+    margin: 0;
+}
 
 @media only screen and (max-width: 1260px) {
 

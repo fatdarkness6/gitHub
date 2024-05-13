@@ -5,7 +5,7 @@ import { tokenTest } from "../src/token";
 async function repositories(username) {
 
     const octokit = new Octokit({
-        auth: tokenTest()
+        auth: "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"
       })
 
 let render =  await octokit.request('GET /users/{username}/repos', {

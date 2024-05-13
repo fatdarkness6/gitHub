@@ -16,7 +16,7 @@ export default function SearchRepositories() {
   const [searchResults, setSearchResults] = useSearchParams();
   let [pages, setPages] = useState(1);
   const [loading, setLoading] = useState(false)
-
+  const [total_count, setTotal_count] = useState(0)
 
   let searchParamsType = searchResults.get('type');
   let searchParams = searchResults.get('q');
@@ -44,7 +44,7 @@ export default function SearchRepositories() {
         type: 'updateSearchLanguages',
         payload: e.items,
       });
-      
+      setTotal_count(e.total_count)
       setLoading(false)
     })
   }, [pages]);
@@ -60,6 +60,31 @@ export default function SearchRepositories() {
   const [state, dispatch] = useReducer(searchLanguagesReducer, objReducer);
 
 
+  function calculateTotal_count() {
+    if(total_count > 1000 && total_count < 10000) {
+      return Math.trunc(total_count / 1000) + 'K Results'
+    }else if(total_count > 10000 && total_count < 100000) {
+      return Math.trunc(total_count / 1000) + 'K Results'
+    }else if(total_count > 100000 && total_count < 1000000)  {
+      return Math.trunc(total_count / 1000) + 'K Results'
+    }else if(total_count > 1000000 && total_count < 10000000) {
+      return Math.trunc(total_count / 1000000 ) + "M Results"
+    }else if(total_count > 10000000 && total_count < 100000000)  {
+      return Math.trunc(total_count / 1000000 ) + "M Results"
+    }else if (total_count <1000) {
+      return total_count + " Results"
+    }else if (total_count == 0) {
+      return "No Results"
+    }
+  }
+  let calculatePages = () => {
+    if(total_count < 1000) {
+      return Math.trunc(total_count / 10);
+    }else if (total_count > 1000) {
+      return 100
+    }
+  }
+
   return (
     <>
     { loading ?  <TopBarProgress /> : null}
@@ -70,7 +95,8 @@ export default function SearchRepositories() {
             <SearchFilter q = {searchParams} lan={state.result} />
             <div className='p2'>
               <div className='repose'>
-                
+                {state.result ?<h5>{calculateTotal_count()}</h5> : ""}
+                {console.log(total_count)}
                 {state.result.filter((e) => {
                  
                   if(e.language == lan ) {
@@ -104,7 +130,7 @@ export default function SearchRepositories() {
               }}  className='pageination'>
                 {state.result.length > 0  ?<Pagination
                   page={page}
-                  count={100}
+                  count={calculatePages()}
                   color="primary"
                   
                   renderItem={(item) => (
