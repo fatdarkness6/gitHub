@@ -2483,6 +2483,21 @@ overflow: hidden;
         font-size: 28px;
     }
 }
+@media only screen and (max-width: 810px) {
+    .main .flexing {
+        flex-direction: column;
+    }
+    .searchFilter {
+        position: unset;
+        width: 100%;
+    }
+    .main .wrapper2 .p2 {
+        width: 100%;
+    }
+    .searchFilter {
+        height: auto;
+    }
+}
 @media only screen and (max-width: 800px) {
     #noneBtn {
         display: flex;
@@ -2504,11 +2519,6 @@ overflow: hidden;
     }
     .none3-1 {
         display: block;
-    }
-    .main .flexing {
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-items: center;
     }
     .main :is(.p1 , .p2) {
         width: 100%;
@@ -2567,6 +2577,7 @@ overflow: hidden;
         width: 60%;
         font-size: 25px;
 }
+
 @media only screen and (max-width: 710px) {
     .footer .same2 {
         align-items: center;
@@ -2687,6 +2698,10 @@ overflow: hidden;
     .pop {
         background-attachment: unset;
         background-image: url(../public/desktop-wallpaper-dark-souls-android-awesome-dark-souls.jpg);
+    }
+    .repose .space {
+        flex-direction: column;
+        gap: 20px;
     }
 }
 @media only screen and (max-width: 490px) {

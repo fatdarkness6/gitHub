@@ -80,7 +80,7 @@ export default function SearchCommits() {
                           name = {e.author == null ? "" : e.author.login}
                           image = {e.author == null ? "" : e.author.avatar_url}
                           commiterImage = {e.committer == null ? "" : e.committer.avatar_url}
-                          commiterLogin = {e.committer.login}
+                          commiterLogin = {e.committer == null ? "" : e.committer.login}
                           time = {e.commit.author.date}
                         />
                       </>

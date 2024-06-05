@@ -206,17 +206,6 @@ export default function Header1() {
                     </button>
                   </Link>
                 </li>
-                <li>
-                  <Link to={'?tab=star'}>
-                    <button className='noneBorder star-none'>
-                      <div className='give-position'>
-                        <i class='fa fa-star-o'></i>
-
-                        <h6>Stars</h6>
-                      </div>
-                    </button>
-                  </Link>
-                </li>
               </ul>
 
 

@@ -72,16 +72,14 @@ export default function SearchFilter(props) {
                   <h5>Commits</h5>
                 </li>
               </Link>
-            </div >
-            <div className={
-                search.get('type') == 'topics' && 'activeSearch' 
-              } >
-            <Link to={`/search?q=${props.q}&type=topics`}>
-              <li>
-                <i class='fa-solid fa-snowflake'></i>
-                <h5>Topics</h5>
-              </li>
-            </Link>
+            </div>
+            <div className={search.get('type') == 'topics' && 'activeSearch'}>
+              <Link to={`/search?q=${props.q}&type=topics`}>
+                <li>
+                  <i class='fa-solid fa-snowflake'></i>
+                  <h5>Topics</h5>
+                </li>
+              </Link>
             </div>
           </ul>
         </div>
@@ -111,38 +109,40 @@ export default function SearchFilter(props) {
               </div>
             </>
           ) : (
-            <>
-              <span>language</span>
-              {lan.map((e) => {
-                arry.push(e.language);
-              })}
-              {arry.forEach((e) => {
-                if (!newArray.includes(e)) {
-                  newArray.push(e);
-                }
-              })}
-              {newArray
-                .filter((e) => {
-                  return e !== null && e !== undefined && e !== '';
-                })
-                .map((e) => {
-                  return (
-                    <>
-                      <div
-                        onClick={() => {
-                          let searchParams = new URLSearchParams(
-                            window.location.search
-                          );
-                          searchParams.set('languge', e);
-                          window.location.search = searchParams.toString();
-                        }}
-                        className='showLan'>
-                        <h6>{e}</h6>
-                      </div>
-                    </>
-                  );
+            search.get('type') == 'repositories' && (
+              <>
+                <span>language</span>
+                {lan.map((e) => {
+                  arry.push(e.language);
                 })}
-            </>
+                {arry.forEach((e) => {
+                  if (!newArray.includes(e)) {
+                    newArray.push(e);
+                  }
+                })}
+                {newArray
+                  .filter((e) => {
+                    return e !== null && e !== undefined && e !== '';
+                  })
+                  .map((e) => {
+                    return (
+                      <>
+                        <div
+                          onClick={() => {
+                            let searchParams = new URLSearchParams(
+                              window.location.search
+                            );
+                            searchParams.set('languge', e);
+                            window.location.search = searchParams.toString();
+                          }}
+                          className='showLan'>
+                          <h6>{e}</h6>
+                        </div>
+                      </>
+                    );
+                  })}
+              </>
+            )
           )}
         </div>
       </div>
