@@ -2497,6 +2497,9 @@ overflow: hidden;
     .searchFilter {
         height: auto;
     }
+    .main .p {
+        width: 100%;
+    }
 }
 @media only screen and (max-width: 800px) {
     #noneBtn {
